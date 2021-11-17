@@ -2,9 +2,11 @@ package com.hz;
 
 import java.awt.geom.NoninvertibleTransformException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class Main {
 
+    private static String[] goodAnswers = {"true", "yes", "oh yeah", "great", "sure", "love to", "of course", "always", "never done otherwise"};
     public static void main(String[] args) {
 	// write your code here
 
@@ -21,7 +23,10 @@ public class Main {
         writer.write(q1);
 
         // read response
-        Boolean ans1 = reader.readLine().equals("Yep");
+
+
+
+        Boolean ans1 = findAnswer(reader.readLine());
 
         //TODO
         // the reader should accept the following values as true:
@@ -36,5 +41,13 @@ public class Main {
 
         // allow user to read our response
         reader.readLine();
+    }
+
+    private static boolean findAnswer(String word){
+        for( int i=0; i<goodAnswers.length; i++){
+            if(word.equals(goodAnswers[i]))
+                return true;
+        }
+        return false;
     }
 }
